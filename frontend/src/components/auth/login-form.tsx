@@ -2,6 +2,7 @@ import { loginSchema } from '../../lib/auth';
 import { Form, Input } from '../ui/form';
 import { Link } from 'react-router-dom';
 import { paths } from '../../config/path';
+import { AuthFooter } from './auth-footer';
 
 export const LoginForm = () => {
   return (
@@ -25,20 +26,7 @@ export const LoginForm = () => {
               error={formState.errors['password']}
               className="w-full"
             />
-            <div className="mt-4 flex flex-col gap-2">
-              <button className="p-2 bg-primary text-white rounded-md w-full">
-                Submit
-              </button>
-              <Link
-                to={paths.auth.register.getHref()}
-                className="text-sm text-center text-primary"
-              >
-                I Don't have an account
-              </Link>
-              <Link to="#" className="text-sm text-center text-secondary-font">
-                Forgot Password
-              </Link>
-            </div>
+            <AuthFooter mode="login" />
           </>
         )}
       </Form>

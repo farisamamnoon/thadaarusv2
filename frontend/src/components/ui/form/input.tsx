@@ -11,16 +11,16 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { type, id, label, className, registration, placeholder, ...props },
+    { type, id, label, className, registration, placeholder, error, ...props },
     ref
   ) => {
     return (
-      <FieldWrapper id={id} label={label}>
+      <FieldWrapper id={id} label={label} error={error}>
         <input
           type={type}
           id={id}
           ref={ref}
-          className={`py-2 px-4 bg-gray-100 rounded border-primary mb-8 ${className}`}
+          className={`py-2 px-4 bg-gray-100 rounded border-primary ${className}`}
           placeholder={placeholder}
           {...registration}
           {...props}

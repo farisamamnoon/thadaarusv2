@@ -20,7 +20,7 @@ export const FieldWrapper = ({
   children,
 }: FieldWrapperProps) => {
   return (
-    <div>
+    <div className='mb-8'>
       <Label htmlFor={id} title={label} />
       {children}
       <Error message={error?.message} />

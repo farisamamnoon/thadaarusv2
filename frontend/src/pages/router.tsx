@@ -1,14 +1,23 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { paths } from "../config/path";
-import { Login } from "./auth/login";
-import { QueryClient, useQueryClient } from "@tanstack/react-query";
-import { useMemo } from "react";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { paths } from '../config/path';
+import { QueryClient, useQueryClient } from '@tanstack/react-query';
+import { useMemo } from 'react';
 
 export const createAppRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
     {
       path: paths.auth.login.path,
-      Component: Login,
+      lazy: async () => {
+        const { Login } = await import('./auth/login');
+        return { Component: Login };
+      },
+    },
+    {
+      path: paths.auth.register.path,
+      lazy: async () => {
+        const { Register } = await import('./auth/register');
+        return { Component: Register };
+      },
     },
   ]);
 
