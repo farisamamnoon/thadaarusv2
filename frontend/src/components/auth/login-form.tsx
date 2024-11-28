@@ -1,13 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import { loginSchema } from '../../lib/auth';
 import { Form, Input } from '../ui/form';
-import { Link } from 'react-router-dom';
-import { paths } from '../../config/path';
 import { AuthFooter } from './auth-footer';
+import { paths } from '../../config/path';
 
 export const LoginForm = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      <Form schema={loginSchema} onSubmit={(values) => console.log(values)}>
+      <Form
+        schema={loginSchema}
+        onSubmit={() => navigate(paths.app.home.getHref())}
+      >
         {({ register, formState }) => (
           <>
             <Input

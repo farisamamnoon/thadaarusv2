@@ -7,7 +7,7 @@ export default {
         'auth-bg': 'url(../img/auth-bg.png)',
       },
       colors: {
-        primary: '#665ACF',
+        primary: '#5A67BA',
         't-red': '#F2383A',
         't-green': '#149D52',
         't-orange': '#F9A644',

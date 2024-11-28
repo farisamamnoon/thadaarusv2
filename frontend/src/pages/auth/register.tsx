@@ -8,7 +8,7 @@ export const Register = () => {
         Register
       </h1>
       <p className="mb-8 text-sm">
-        Enter your organization details to start with us.
+        Please enter your organization details to register your account.
       </p>
       <RegisterForm />
     </AuthLayout>

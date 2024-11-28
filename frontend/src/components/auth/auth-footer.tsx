@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { paths } from '../../config/path';
 
 type AuthFooterProps = {
@@ -6,6 +6,8 @@ type AuthFooterProps = {
 };
 
 export const AuthFooter = ({ mode }: AuthFooterProps) => {
+  const { search } = useLocation();
+  const navigateTo = new URLSearchParams(search).get('redirectTo');
   return (
     <div className="mt-4 flex flex-col gap-2">
       <button
@@ -17,8 +19,8 @@ export const AuthFooter = ({ mode }: AuthFooterProps) => {
       <Link
         to={
           mode === 'login'
-            ? paths.auth.register.getHref()
-            : paths.auth.login.getHref()
+            ? paths.auth.register.getHref(navigateTo)
+            : paths.auth.login.getHref(navigateTo)
         }
         className="text-sm text-center text-primary"
       >
