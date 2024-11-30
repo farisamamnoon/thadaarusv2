@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { roleBasedNavItems } from '../../config/nav-items';
 import { useUser } from '../../lib/auth';
 import { Logo } from '../assets/Logo';
@@ -36,8 +36,10 @@ export const AppLayout = () => {
       </aside>
       <div className="pl-60 w-full">
         <Header />
+        <div className='mt-8 mx-10'>
+          <Outlet />
+        </div>
       </div>
-     
     </div>
   );
 };
