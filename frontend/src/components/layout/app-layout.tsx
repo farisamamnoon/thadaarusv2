@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import { roleBasedNavItems } from '../../config/nav-items';
 import { useUser } from '../../lib/auth';
 import { Logo } from '../assets/Logo';
-import { NavItem } from '../ui/nav';
+import { Header, NavItem } from '../ui/nav';
+import { paths } from '../../config/path';
 
 export const AppLayout = () => {
   const user = useUser();
@@ -20,22 +22,22 @@ export const AppLayout = () => {
 
   return (
     <div className="min-h-full w-full flex">
-      <aside className="fixed inset-y-0 left-0 bg-slate-200 w-60 min">
+      <aside className="fixed inset-y-0 left-0 bg-slate-200 w-60">
         <div className="h-16 border-b-2 border-slate-300 grid place-content-center">
-          <Logo />
+          <Link to={paths.app.home.getHref()}>
+            <Logo />
+          </Link>
         </div>
         <nav className="h-full my-8 mx-4 flex flex-col">
           {navlinks?.map((navItem, index) => (
             <NavItem {...navItem} key={index} />
           ))}
-          <div className="mt-auto">aklsjhd</div>
         </nav>
       </aside>
       <div className="pl-60 w-full">
-        <div className="sticky top-0 border-b-2 border-slate-300 h-16 w-full">
-          heading
-        </div>
+        <Header />
       </div>
+     
     </div>
   );
 };
