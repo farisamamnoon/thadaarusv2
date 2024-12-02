@@ -111,6 +111,7 @@ export const paths = {
     },
 
     attendance: {
+      path: '/attendance',
       teacher: {
         path: '/attendance/teachers',
         getHref: () => '/attendance/teachers',

@@ -38,7 +38,7 @@ export const roleBasedNavItems: RoleBasedNavItems = {
     {
       Icon: AttendanceIcon,
       title: 'Attendance',
-      to: paths.app.attendance.teacher.getHref(),
+      to: paths.app.attendance.path,
     },
     {
       Icon: UsersIcon,

@@ -1,9 +1,16 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { paths } from '../config/path';
-import { QueryClient, useQueryClient } from '@tanstack/react-query';
 import { useMemo } from 'react';
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from 'react-router-dom';
+import { QueryClient, useQueryClient } from '@tanstack/react-query';
+
+import { paths } from '../config/path';
+
 import { ProtectedRoutes } from '../lib/auth';
 import { AppLayout } from '../components/layout/app-layout';
+import { Attendance, StudentAttendance, TeacherAttendance } from './app/users';
 
 export const createAppRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -30,10 +37,34 @@ export const createAppRouter = (queryClient: QueryClient) =>
       ),
       children: [
         {
-          path: paths.app.attendance.teacher.getHref(),
-          element: <p>Haiii</p> 
-        }
-      ]
+          index: true,
+          element: <Navigate to={paths.app.dashboard.getHref()} />,
+        },
+        {
+          path: paths.app.dashboard.path,
+          element: <div>Hai</div>,
+        },
+        {
+          path: paths.app.attendance.path,
+          element: <Attendance />,
+          children: [
+            {
+              index: true,
+              element: (
+                <Navigate to={paths.app.attendance.students.getHref()} />
+              ),
+            },
+            {
+              path: paths.app.attendance.students.path,
+              element: <StudentAttendance />,
+            },
+            {
+              path: paths.app.attendance.teacher.path,
+              element: <TeacherAttendance />,
+            },
+          ],
+        },
+      ],
     },
   ]);
 
