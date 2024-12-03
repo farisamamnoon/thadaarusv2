@@ -4,15 +4,15 @@ import { paths } from '../../../config/path';
 const links = [
   {
     name: 'Students',
-    to: paths.app.attendance.students.getHref(),
+    to: paths.app.users.students.getHref(),
   },
   {
     name: 'Teacher',
-    to: paths.app.attendance.teacher.getHref(),
+    to: paths.app.users.teachers.getHref(),
   },
 ];
 
-export const Attendance = () => {
+export const Users = () => {
   return (
     <>
       <nav>
@@ -37,5 +37,5 @@ export const Attendance = () => {
   );
 };
 
-export * from './student/student';
-export * from './teacher/teacher';
+export * from './student';
+export * from './teacher';

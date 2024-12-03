@@ -52,7 +52,7 @@ const defaultData = [
   },
 ];
 
-export const StudentAttendance = () => {
+export const Students = () => {
   const [data, setData] = useState(defaultData);
   const [deleteDialog, setDeleteDialog] = useState({ toggle: false, id: '' });
   const navigate = useNavigate();
@@ -141,3 +141,6 @@ export const StudentAttendance = () => {
     </>
   );
 };
+
+export * from './add';
+export * from './edit';
