@@ -6,7 +6,7 @@ import {
   AttendanceIcon,
   UsersIcon,
   HomeworkIcon,
-} from '../components/assets/nav-icons';
+} from '../components/assets/icons';
 import { NavItemProps } from '../components/ui/nav';
 import { Role } from '../types/api';
 import { paths } from './path';

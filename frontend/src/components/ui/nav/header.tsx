@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Select } from '../form';
-import { UserDropdown } from './user-dropdown';
+import { UserDropdown } from './profile-dropdown';
 
 export const Header = () => {
   const { pathname } = useLocation();
@@ -16,6 +16,7 @@ export const Header = () => {
         <Link
           className='mx-2 after:content-[">"] after:ml-4 capitalize last:after:content-none'
           to={currentLink}
+          key={currentLink}
         >
           {crumb}
         </Link>
@@ -26,7 +27,9 @@ export const Header = () => {
     <div className="sticky top-0 px-10 border-b-2 border-slate-300 h-16 w-full flex items-center justify-between">
       <div>{crumbs}</div>
       <div className="flex gap-8 items-center">
-        <Select />
+        <Select
+          options={[{ label: '2024' }, { label: '2024' }, { label: '2024' }]}
+        />
         <UserDropdown />
       </div>
     </div>

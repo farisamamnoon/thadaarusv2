@@ -19,8 +19,9 @@ export const Attendance = () => {
         {links.map((link) => (
           <NavLink
             to={link.to}
+            key={link.to}
             className={({ isActive }) =>
-              `px-8 py-1 ${
+              `px-8 py-2 ${
                 isActive
                   ? 'border-secondary-font  border-b-2  text-primary-font font-semibold'
                   : ' text-secondary-font '

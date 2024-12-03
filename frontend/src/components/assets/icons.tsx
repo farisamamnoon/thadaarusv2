@@ -1,9 +1,9 @@
-type IconProps = {
+type NavIconProps = {
   active: boolean;
   size?: string;
 };
 
-const DashIcon = ({ active, size }: IconProps) => {
+const DashIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -23,7 +23,7 @@ const DashIcon = ({ active, size }: IconProps) => {
   );
 };
 
-const ClassIcon = ({ active, size }: IconProps) => {
+const ClassIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -43,7 +43,7 @@ const ClassIcon = ({ active, size }: IconProps) => {
   );
 };
 
-const ExamIcon = ({ active, size }: IconProps) => {
+const ExamIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -63,7 +63,7 @@ const ExamIcon = ({ active, size }: IconProps) => {
   );
 };
 
-const DollarIcon = ({ active, size }: IconProps) => {
+const DollarIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -83,7 +83,7 @@ const DollarIcon = ({ active, size }: IconProps) => {
   );
 };
 
-const UsersIcon = ({ active, size }: IconProps) => {
+const UsersIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -103,7 +103,7 @@ const UsersIcon = ({ active, size }: IconProps) => {
   );
 };
 
-const AttendanceIcon = ({ active, size }: IconProps) => {
+const AttendanceIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -123,7 +123,7 @@ const AttendanceIcon = ({ active, size }: IconProps) => {
   );
 };
 
-const HomeworkIcon = ({ active, size }: IconProps) => {
+const HomeworkIcon = ({ active, size }: NavIconProps) => {
   const fill = active ? `#5A67BA` : '#787F89';
   return (
     <svg
@@ -143,6 +143,40 @@ const HomeworkIcon = ({ active, size }: IconProps) => {
   );
 };
 
+const EditIcon = ({ size }: Omit<NavIconProps, 'active'>) => {
+  return (
+    <svg
+      width={size || '20'}
+      height={size || '20'}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.497803 12.374V15.499H3.62002L12.8285 6.28236L9.70627 3.15737L0.497803 12.374ZM15.243 3.8657C15.5677 3.5407 15.5677 3.0157 15.243 2.6907L13.2947 0.740698C12.97 0.415698 12.4455 0.415698 12.1208 0.740698L10.5971 2.2657L13.7194 5.3907L15.243 3.8657Z"
+        fill="#F9A644"
+      />
+    </svg>
+  );
+};
+
+const DeleteIcon = ({ size }: Omit<NavIconProps, 'active'>) => {
+  return (
+    <svg
+      width={size || '20'}
+      height={size || '20'}
+      viewBox="0 0 12 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0.957225 13.8324C0.957225 14.749 1.70656 15.499 2.62241 15.499H9.28314C10.199 15.499 10.9483 14.749 10.9483 13.8324V3.83236H0.957225V13.8324ZM11.7809 1.33236H8.86685L8.03425 0.499023H3.8713L3.0387 1.33236H0.124634V2.99902H11.7809V1.33236Z"
+        fill="#F2383A"
+      />
+    </svg>
+  );
+};
+
 export {
   DashIcon,
   DollarIcon,
@@ -151,4 +185,6 @@ export {
   UsersIcon,
   AttendanceIcon,
   HomeworkIcon,
+  DeleteIcon,
+  EditIcon,
 };
