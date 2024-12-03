@@ -84,6 +84,7 @@ export const paths = {
     },
 
     users: {
+      path: '/users',
       teachers: {
         path: '/users/teachers',
         getHref: () => '/users/teachers',

@@ -37,5 +37,5 @@ export const Attendance = () => {
   );
 };
 
-export * from './student';
-export * from './teacher';
+export * from './student/student';
+export * from './teacher/teacher';

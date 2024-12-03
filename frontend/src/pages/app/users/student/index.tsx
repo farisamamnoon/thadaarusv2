@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { DeleteIcon, EditIcon } from '../../../components/assets/icons';
-import { Select } from '../../../components/ui/form';
-import { Search } from '../../../components/ui/search';
-import { Table } from '../../../components/ui/table';
-import { StudentDeleteModal } from '../../../features/students/student-delete-model';
-import { ageFromDate, formatDate } from '../../../utils/date';
-import { paths } from '../../../config/path';
+import { DeleteIcon, EditIcon } from '../../../../components/assets/icons';
+import { Select } from '../../../../components/ui/form';
+import { Search } from '../../../../components/ui/search';
+import { Table } from '../../../../components/ui/table';
+import { StudentDeleteModal } from '../../../../features/students/student-delete-model';
+import { ageFromDate, formatDate } from '../../../../utils/date';
+import { paths } from '../../../../config/path';
 
 const defaultData = [
   {

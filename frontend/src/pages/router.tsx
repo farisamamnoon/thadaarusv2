@@ -10,7 +10,7 @@ import { paths } from '../config/path';
 
 import { ProtectedRoutes } from '../lib/auth';
 import { AppLayout } from '../components/layout/app-layout';
-import { Attendance, StudentAttendance, TeacherAttendance } from './app/users';
+import { Students, Teachers, Users } from './app/users';
 
 export const createAppRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -45,22 +45,35 @@ export const createAppRouter = (queryClient: QueryClient) =>
           element: <div>Hai</div>,
         },
         {
-          path: paths.app.attendance.path,
-          element: <Attendance />,
+          path: paths.app.users.path,
+          element: <Users />,
           children: [
             {
               index: true,
-              element: (
-                <Navigate to={paths.app.attendance.students.getHref()} />
-              ),
+              element: <Navigate to={paths.app.users.students.getHref()} />,
             },
             {
-              path: paths.app.attendance.students.path,
-              element: <StudentAttendance />,
+              path: paths.app.users.students.path,
+              lazy: async () => {
+                const { Students } = await import('./app/users/student/index');
+                return { Component: Students };
+              },
             },
             {
-              path: paths.app.attendance.teacher.path,
-              element: <TeacherAttendance />,
+              path: paths.app.users.students.add.path,
+              lazy: async () => {
+                const { AddStudent } = await import(
+                  './app/users/student/index'
+                );
+                return { Component: AddStudent };
+              },
+            },
+            {
+              path: paths.app.users.teachers.path,
+              lazy: async () => {
+                const { Teachers } = await import('./app/users/teacher/index');
+                return { Component: Teachers };
+              },
             },
           ],
         },
