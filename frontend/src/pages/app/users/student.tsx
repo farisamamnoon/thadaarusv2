@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { DeleteIcon, EditIcon } from '../../../components/assets/icons';
 import { Select } from '../../../components/ui/form';
 import { Search } from '../../../components/ui/search';
 import { Table } from '../../../components/ui/table';
+import { StudentDeleteModal } from '../../../features/students/student-delete-model';
+import { ageFromDate, formatDate } from '../../../utils/date';
+import { paths } from '../../../config/path';
 
 const defaultData = [
   {
@@ -47,18 +52,14 @@ const defaultData = [
   },
 ];
 
-const ageFromDate = (date: Date) => {
-  return Math.abs(date.getFullYear() - new Date().getFullYear());
-};
-const formatDate = (date: Date) => {
-  return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
-};
-
 export const StudentAttendance = () => {
   const [data, setData] = useState(defaultData);
+  const [deleteDialog, setDeleteDialog] = useState({ toggle: false, id: '' });
+  const navigate = useNavigate();
 
-  const handleDelete = (id: string) => {
-    setData((data) => data.filter((entry) => entry.id !== id));
+  const handleDelete = () => {
+    setData((data) => data.filter((entry) => entry.id !== deleteDialog.id));
+    setDeleteDialog({ toggle: false, id: '' });
   };
 
   return (
@@ -81,6 +82,12 @@ export const StudentAttendance = () => {
             );
           }}
         />
+        <button
+          className="ml-auto bg-primary py-2 px-4 text-white rounded"
+          onClick={() => navigate(paths.app.users.students.add.getHref())}
+        >
+          Add Student
+        </button>
       </div>
       <div>
         <Table
@@ -114,7 +121,7 @@ export const StudentAttendance = () => {
                     </span>
                     <span
                       className="cursor-pointer"
-                      onClick={handleDelete.bind(null, id)}
+                      onClick={() => setDeleteDialog({ toggle: true, id })}
                     >
                       <DeleteIcon />
                     </span>
@@ -125,6 +132,12 @@ export const StudentAttendance = () => {
           ]}
         />
       </div>
+      {deleteDialog.toggle && (
+        <StudentDeleteModal
+          onDelete={handleDelete}
+          setDeleteDialog={setDeleteDialog}
+        />
+      )}
     </>
   );
 };
