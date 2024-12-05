@@ -6,7 +6,6 @@ export const schema = z.object({
     .string()
     .min(1, 'DOB is required')
     .transform((value) => new Date(value))
-    .refine((value) => !isNaN(value.getTime()), 'Invalid date format')
     .refine(
       (value) => value <= new Date(),
       'Date of Birth must not be in the future'
@@ -14,7 +13,7 @@ export const schema = z.object({
   email: z.string().email('Invalid email format').min(1, 'Email is required'),
   phoneNumber: z
     .string()
-    .min(1, 'Phone Number is required')
+    .min(10, 'Phone Number must be atleast 10 numbers')
     .regex(/^[0-9]+$/, 'Phone Number can only contain numbers'),
 });
 

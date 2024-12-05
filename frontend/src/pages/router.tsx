@@ -10,7 +10,7 @@ import { paths } from '../config/path';
 
 import { ProtectedRoutes } from '../lib/auth';
 import { AppLayout } from '../components/layout/app-layout';
-import { Students, Teachers, Users } from './app/users';
+import { Users } from './app/users';
 
 export const createAppRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -62,10 +62,17 @@ export const createAppRouter = (queryClient: QueryClient) =>
             {
               path: paths.app.users.students.add.path,
               lazy: async () => {
-                const { AddStudent } = await import(
-                  './app/users/student/index'
-                );
+                const { AddStudent } = await import('./app/users/student/add');
                 return { Component: AddStudent };
+              },
+            },
+            {
+              path: paths.app.users.students.edit.path,
+              lazy: async () => {
+                const { EditStudent } = await import(
+                  './app/users/student/edit'
+                );
+                return { Component: EditStudent };
               },
             },
             {

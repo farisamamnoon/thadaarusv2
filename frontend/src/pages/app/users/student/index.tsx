@@ -116,7 +116,12 @@ export const Students = () => {
               Cell: ({ entry: { id } }) => {
                 return (
                   <div className="flex justify-center gap-8">
-                    <span className="cursor-pointer">
+                    <span
+                      className="cursor-pointer"
+                      onClick={() =>
+                        navigate(paths.app.users.students.edit.getHref(id))
+                      }
+                    >
                       <EditIcon />
                     </span>
                     <span
@@ -141,6 +146,3 @@ export const Students = () => {
     </>
   );
 };
-
-export * from './add';
-export * from './edit';

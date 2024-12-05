@@ -11,7 +11,7 @@ export const AddStudent = () => {
     <div className="mt-10">
       <Form
         schema={schema}
-        onSubmit={(values) => navigate(paths.app.users.students.getHref())}
+        onSubmit={() => navigate(paths.app.users.students.getHref())}
         className=" grid grid-cols-2 gap-x-16"
       >
         {({ register, formState }) => (
